@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Warmer Colder!!!</h1>
+    <button @click="counter += 5">up by a handful</button>
+    <button @click="counter ++">up by 1</button>
+    <button @click="counter --">down by 1</button>
+    <button @click="counter -= 5">down by a handful</button>
+    <p>current status = {{ result }}</p> <!--  a bit contrived, but shows computed vs watch -->
+    <p>
+      {{ counter }}
+    </p>
+    <p>
+      {{ thermometer }}
+    </p>
+  </div>
+
+
+<script>
+new Vue({
+    el: '#app',
+    data:{
+        counter: 0,
+        thermometer: "start guessing sucka!!",
+        goal:Math.floor(Math.random()*100),
+
+    },
+     computed: {
+         result: function(){
+             return this.goal === this.counter ? 'winner' : 'loser'
+         }
+     },
+     watch:{
+         counter: function(newCounter, oldCounter){
+             if(newCounter === this.goal){
+                 this.thermometer = "nailed it, the goal is " + this.goal + ". restarting in 3 seconds..."
+                 vm = this
+                 setTimeout(function(){
+                     vm.counter = 0
+                     vm.goal = Math.floor(Math.random()*100)
+                 },3000)
+             }else if(Math.abs(this.goal - newCounter) < Math.abs(this.goal - oldCounter)){
+                 this.thermometer = "getting warmer"
+             }else{
+                 this.thermometer = "getting colder"
+             }
+         }
+     }
+
+})
+
+</script>
+</body>
+</html>

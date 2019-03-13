@@ -1,0 +1,42 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app">
+    <h1 v-once>{{ title }}</h1>
+    <button v-on:click="incrament">hit me baby one more time</button>
+    <p>{{counter}}</p>
+    <p v-on:mouseMove="update">Cordinates: {{x}} : {{y}}</p>
+
+
+  </div>
+
+
+<script>
+new Vue({
+    el: '#app',
+    data:{
+        title: 'hello world',
+        counter: 0,
+        x: 0,
+        y: 0
+    },
+     methods: {
+         incrament: function(){
+             this.counter ++;
+         },
+         update: function(event){
+             this.x = event.clientX;
+             this.y = event.clientY;
+         }
+     }
+})
+
+</script>
+</body>
+</html>

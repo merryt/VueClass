@@ -1,0 +1,32 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app">
+    <input name="name" type="text" v-model="name" />
+    <p>hi {{ name}}, you are a funny person</p>
+
+  </div>
+
+
+<script>
+new Vue({
+    el: '#app',
+    data:{
+        name: 'tyler'
+    },
+     methods: {
+         incrament: function(step, event){
+             this.counter = this.counter + step;
+         }
+     }
+})
+
+</script>
+</body>
+</html>

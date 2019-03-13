@@ -1,0 +1,62 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+     .profileImg{
+         width:200px;
+         height:200px;
+         overflow:hidden;
+         border-radius: 50%;
+     }
+     .profileImg > img{
+         height:200px;
+         margin-left: -100px;
+     }
+     input{
+         width: 50%;
+     }
+    </style>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app">
+    <div class="profileImg" v-html="profileImg"></div>
+    <p>
+      I am {{name}}, and my age is {{age}}
+    </p>
+    <p> I don't have time to talk, I have {{randomNum}} worthless things to do...</p>
+    <h3>Why are you bothering me?</h3>
+    <input name="thingToBotherMeWith" type="text" v-bind:value="getExcuse()"/>
+
+  </div>
+
+
+<script>
+new Vue({
+    el: '#app',
+    data:{
+        name: 'Ron Swanson',
+        age: "none of your damn business",
+        profileImg: `<img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fi.amz.mshcdn.com%2FpA6REmPF3HtGYCKBuv38exNQUoI%3D%2F1200x630%2F2016%252F10%252F14%252Fb4%252Fef65f3bb443344f58a1cd2045f7b57b5.22526.jpg&f=1" />`,
+        randomNum: Math.floor(Math.random()*100)
+
+    },
+     methods: {
+         getExcuse: function(){
+             excuses = [
+                 "I have a question about the parks department",
+                 "Tom's latest business is causing problems to me neighborhood",
+                 "how do I make a boat?",
+             ]
+             return excuses[Math.floor(Math.random() * excuses.length)];
+         }
+     }
+})
+
+</script>
+</body>
+</html>

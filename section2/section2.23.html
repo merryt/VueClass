@@ -1,0 +1,36 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app">
+    <h1 v-once>{{ title }}</h1>
+    <button v-on:click="counter++">up up and away</button>
+    <button v-on:click="counter--">down down baby, low street baby</button>
+    <p>{{counter}} is {{ output }}</p>
+
+
+  </div>
+
+
+<script>
+new Vue({
+    el: '#app',
+    data:{
+        title: 'hello world',
+        counter: 0
+    },
+    computed: {
+        output: function(){
+            return this.counter  > 5 ? 'greater then 5' : "less then 5"
+        }
+    }
+})
+
+</script>
+</body>
+</html>

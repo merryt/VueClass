@@ -1,0 +1,102 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+
+     .demo{
+         width: 100px;
+         height: 100px;
+         background-color: gray;
+         display: inline-block;
+         margin: 10px;
+         opacity:0;  /* make things invisible upon start */
+         transition: opacity 1s;
+         background-color:red;
+
+     }
+     .active{
+         opacity: 1;
+     }
+
+     .border{
+         margin-top: 10px;
+         border: 5px solid #cccccc;
+         border-radius: 3px;
+         transition: all .5s
+     }
+     .starter{
+         margin-top: 10px;
+         width: 133px;
+         background-color: #cccccc;
+     }
+     .finisher{
+         display: flex;
+         flex-direction: column;
+         padding: 10px;
+
+     }
+     .togglable{
+
+         background:red
+     }
+
+    </style>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app">
+    <button @click="startEffect" :disabled="disableBtn">Let's get this show on the road</button>
+
+    <div class="demo" :class="{active: showStarter}"></div>
+    <div :style="[myStyle, {border: '5px solid #cccccc', borderRadius: '3px'}]">
+      <input v-model="color" type="text" />
+      <input v-model="width" type="text" />
+    </div>
+    <div :class="[className, 'border']">
+      guess the class:
+      <input v-model="className" type="text" />
+    </div>
+     <div :class="[{togglable: toggle}, 'border']">
+      check the box:
+      <input type="checkbox" id="togglable" value="togglable" v-model="toggle">
+    </div>
+  </div>
+
+
+<script>
+new Vue({
+     el: '#app',
+     data:{
+         showStarter: false,
+         color: '#cccccc',
+         width: 133,
+         disableBtn: false,
+         className: "starter",
+         toggle: true
+
+     },
+     computed:{
+         myStyle: function(){
+             return{
+                 marginTop: "10px",
+                 backgroundColor: this.color,
+                 width: this.width + 'px'
+             }
+         }
+     },
+     methods :{
+         startEffect: function(){
+             this.disableBtn = true
+             setInterval(() => {this.showStarter = !this.showStarter;}, 1000 )
+
+         }
+     }
+})
+
+</script>
+</body>
+</html>

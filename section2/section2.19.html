@@ -1,0 +1,54 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app">
+    <h1 v-once>{{ title }}</h1>
+    <button v-on:click="incrament(3, $event)">hit me baby one more time</button>
+    <p>{{counter}}</p>
+    <p v-on:mouseMove="update">
+      Cordinates: {{x}} : {{y}}
+      <br/>
+      - <span v-on:mouseMove.stop="">deadspace</span>
+      <br/>
+      - <span v-on:mouseMove="dummy">deadspace</span>
+    </p>
+
+
+  </div>
+
+
+<script>
+new Vue({
+    el: '#app',
+    data:{
+        title: 'hello world',
+        counter: 0,
+        x: 0,
+        y: 0
+    },
+     methods: {
+         incrament: function(step, event){
+             console.log(event)
+             this.counter = this.counter + step;
+         },
+         update: function(event){
+             this.x = event.clientX;
+             this.y = event.clientY;
+         },
+         dummy: function(event){
+             event.stopPropagation();
+             return ''
+         }
+
+     }
+})
+
+</script>
+</body>
+</html>

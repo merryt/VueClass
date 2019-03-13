@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="alertMe">ring ring ring ring ring ring ring</button>
+    <hr/>
+    <div>
+      <input name="binding" type="text" value="" v-on:keydown="updateValue" />
+      <p>{{value}}</p>
+    </div>
+    <hr/>
+    <div>
+      <input name="binding" type="text" value="" v-on:keydown.enter="updateValue" />
+      <p>{{value}}</p>
+    </div>
+  </div>
+
+
+<script>
+new Vue({
+    el: '#app',
+    data:{
+        value: " ",
+    },
+     methods: {
+         alertMe: function(){
+             alert("banana phone")
+         },
+         updateValue: function(event){
+             this.value = event.target.value
+         }
+     }
+})
+
+</script>
+</body>
+</html>

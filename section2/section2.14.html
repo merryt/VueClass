@@ -1,0 +1,37 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app">
+    <h1 v-once>{{ title }}</h1>
+    <p>
+      {{sayHello()}}
+      <a v-bind:href="sayHello()">google</a>
+      </p>
+  </div>
+
+
+<script>
+new Vue({
+    el: '#app',
+    data:{
+        title: 'hello world',
+        link: "http://google.com"
+
+    },
+     methods: {
+         sayHello: function(){
+             this.title = "hello"
+             return this.title;
+         }
+     }
+})
+
+</script>
+</body>
+</html>

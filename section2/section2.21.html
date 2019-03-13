@@ -1,0 +1,36 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app">
+    <h1 v-once>{{ title }}</h1>
+    <button v-on:click="incrament(3, $event)">hit me baby several more time</button>
+    <button v-on:click="counter++">hit me baby one more time</button>
+    <p>{{counter}} is {{counter  > 10 ? 'greater then 10' : "less then 10"}}</p>
+
+
+  </div>
+
+
+<script>
+new Vue({
+    el: '#app',
+    data:{
+        title: 'hello world',
+        counter: 0
+    },
+     methods: {
+         incrament: function(step, event){
+             this.counter = this.counter + step;
+         }
+     }
+})
+
+</script>
+</body>
+</html>
