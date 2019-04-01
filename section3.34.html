@@ -1,0 +1,28 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app">
+    <p v-if="show">You can see me!</p>
+    <p v-else>other  me!</p>
+    <p>but can you see me?</p>
+    <button @click="show = !show"> toggle first tab</button>
+  </div>
+
+
+<script>
+new Vue({
+    el: '#app',
+    data:{
+        show: true
+    }
+})
+
+</script>
+</body>
+</html>
