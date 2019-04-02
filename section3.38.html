@@ -1,0 +1,36 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(ingredient, index) in ingredients"> {{ ingredient }} ({{ index }})</li>
+    </ul>
+
+    <div v-for="person in persons">
+      {{person.name}} <template v-if="person.age != 'unknown'">{{person.age}}</template>
+    </div>
+
+    <span v-for="n in 10">{{n}}</span>
+
+
+  </div>
+  <script>
+   new Vue({
+       el: '#app',
+       data:{
+           ingredients:["meat", "fruit", "cookies"],
+           persons: [
+               { name: 'max', age: 25, color: 'red' },
+               { name: 'anna', age: 'unknown', color: 'blue' },
+           ]
+       }
+   })
+  </script>
+</body>
+</html>

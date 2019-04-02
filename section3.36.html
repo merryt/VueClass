@@ -8,11 +8,12 @@
 </head>
 <body>
   <div id="app">
-    <p v-if="show">You can see me!</p>
-    <p v-else>other  me!</p>
+    <p v-show="show">v-show!</p>
+    <p v-if="show">v-if!</p>
+    <p v-else>v-else!</p>
     <template v-if="show">
-      <h1>Header</h1>
-      <p>inside a template</p>
+      <h1>you can't use show on templates</h1>
+      <p>you should opt for v-if for performance, but v-show is useful sometimes because it keeps the item in the dom as a display:none element </p>
     </template>
     <p>but can you see me?</p>
     <button @click="show = !show"> toggle first tab</button>

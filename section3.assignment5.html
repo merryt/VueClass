@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+<style>
+ .towers{
+     display:flex;
+     justify-content: space-between;
+ }
+ .towerContainer, .tower{
+     display:flex;
+     flex-direction: column;
+     align-items:center;
+ }
+ .towerContainer{width: 30%;}
+ .tower{
+     justify-content:flex-end;
+     padding: 0;
+     border-bottom: 10px solid #673a00;
+     width: 80%;
+     height: 120px;
+     min-width: 240px;
+ }
+ .tower:after{
+     content: " ";
+     background-color: #673a00;
+     height: 120px;
+     position: absolute;
+     width: 10px;
+     z-index: -1;
+ }
+ .ring{
+     height: 20px;
+     list-style:none;
+ }
+
+</style>
+</head>
+<body>
+  <div id="app">
+    <h1>Towers of Hanoi</h1>
+    <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">More Info</a>
+    <ol>
+      <li>Only one disk can be moved at a time.</li>
+<li>Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.</li>
+<li>No larger disk may be placed on top of a smaller disk.</li>
+    </ol>
+    <div class="towers">
+      <div class="towerContainer" v-for="(tower, index) in towers">
+        <h4 v-if="index == 0">Starting tower</h4>
+        <h4 v-else-if="index == 2">Ending tower</h4>
+        <h4 v-else>Worthless tower</h4>
+        <ul class="tower">
+          <li v-for="ring in tower" class="ring" :style="ring"></li>
+        </ul>
+        <div v-if="tower[0]">
+          <button @click="move(index, (index == 0 ? 2 : index - 1 ))">
+            <template v-if="index != 0 ">Move Left</template>
+            <template v-else>Round the world</template>
+          </button>
+          <button @click="move(index, (index == 2 ? 0 : index + 1))">
+            <template v-if="index != 2">Move Right</template>
+            <template v-else>Round the world</template>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 v-if="towers[2][4]">You won in {{moverCounter}} moves, take this highfive ✋!!!</h2>
+    </div>
+  </div>
+  <script>
+   new Vue({
+       el: '#app',
+       data:{
+           towers:[
+               [
+                   {width: "50px", backgroundColor: "#336699", id: 1},
+                   {width: "90px", backgroundColor: "#CC3300", id: 2},
+                   {width: "135px", backgroundColor: "#339933", id: 3},
+                   {width: "175px", backgroundColor: "#336699", id: 4},
+                   {width: "210px", backgroundColor: "#FFCC33", id: 5}
+               ],
+               [],
+               [],
+           ],
+           moverCounter: 0
+       },
+       methods:{
+           move: function(fromTower, toTower){
+               sourceTower = this.towers[fromTower];
+               destinationTower = this.towers[toTower];
+
+               if(destinationTower[0] && destinationTower[0].id < sourceTower[0].id){
+                   alert("Place smaller blocks on larger ones!");
+               }else{
+                   ringToMove = sourceTower.shift();
+                   destinationTower.unshift(ringToMove);
+                   this.moverCounter ++;
+               }
+           }
+       }
+
+   })
+  </script>
+</body>
+</html>
