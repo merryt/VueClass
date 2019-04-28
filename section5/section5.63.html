@@ -11,8 +11,18 @@
   <div id="app2">
     {{title}}
     <button @click="onChange">Change</button>
+    <tyler></tyler>
+    <tyler></tyler>
+    <tyler></tyler>
   </div>
   <script>
+
+   // super simple compnent, called with <tyler></tyler>
+   Vue.component("tyler",
+                 {template: "<h1> TYLER!</h1>"})
+
+
+
    var vm1 = new Vue({
        el: '#app1',
        data:{
