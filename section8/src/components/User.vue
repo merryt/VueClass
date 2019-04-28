@@ -7,10 +7,15 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <!-- this will send data to the component, and allow you to listen to events-->
-        <app-user-detail :name="name" @nameWasReset="name = $event"></app-user-detail>
+        <app-user-detail
+            :name="name"
+            :age="age"
+            @nameWasReset="name = $event"></app-user-detail>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <app-user-edit></app-user-edit>
+        <app-user-edit :age="age">
+
+        </app-user-edit>
       </div>
     </div>
   </div>
@@ -23,7 +28,8 @@
  export default {
      data: function(){
          return {
-          name: "Tyler"
+             name: "Tyler",
+             age: 30
          }
      },
      methods:{
