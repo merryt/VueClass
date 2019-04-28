@@ -1,0 +1,43 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8"/>
+<title>Vue demo</title>
+</head>
+<body>
+  <div id="app1">{{title}} -- {{counter}}</div>
+  <div id="app2">
+    {{title}}
+    <button @click="onChange">Change</button>
+  </div>
+  <script>
+   var vm1 = new Vue({
+       el: '#app1',
+       data:{
+           title: "app one",
+           counter: 0
+       }
+   })
+
+   var vm2 = new Vue({
+       el: '#app2',
+       data:{
+           title: "app two"
+       },
+       methods: {
+           onChange: function(){
+               // you can call vue parts of vue components from other vue components
+               vm1.counter ++
+           }
+       }
+   })
+
+   // you can call functions from the outside of view by calling in on the outside
+   setTimeout(()=>{vm2.onChange()}, 2000)
+
+
+  </script>
+</body>
+</html>
