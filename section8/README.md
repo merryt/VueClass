@@ -1,6 +1,6 @@
-# section8
+# vue-cli
 
-> communicating between components
+> A Vue.js project
 
 ## Build Setup
 
