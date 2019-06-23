@@ -1,11 +1,16 @@
 <template>
   <div>
+    <slot name="title">Sample Quote</slot>
+    <slot name="subtitle">default content will get show here when there isn't a subtitle slot </slot>
+    <slot name="body"></slot>
     <slot></slot>
   </div>
 </template>
 
 <script>
+ export default{
 
+ }
 </script>
 
 <style scoped>
